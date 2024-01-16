@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import os
 import matplotlib.image as img
 
-noiseFiles = os.listdir("./fairyTails/")
+noiseFiles = os.listdir("./data/fairyTails/")
 
 def process_noise_image(imgpath):
-    imgpath = "./fairyTails/" + imgpath
+    imgpath = "./data/fairyTails/" + imgpath
     image = img.imread(imgpath)
     level = imgpath.split("/")[-1][1:-4]
     level = 100 - int(level)
@@ -30,6 +30,7 @@ def process_noise_image(imgpath):
     plt.margins(0,0)
     plt.imshow(op)
     plt.savefig(imgpath,dpi=100,pad_inches=0)
+    plt.close()
 
 if __name__ == "__main__":
     cores = multiprocessing.cpu_count()
